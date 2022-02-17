@@ -24,3 +24,9 @@ version: 0.1.0
 appVersion: "1.16.0"
 
 icon: file://teste.png
+
+dependencies:
+ - name: grafana
+   version: 6.21.7
+   repository: file://../common/grafana
+   condition: grafana.enabled
