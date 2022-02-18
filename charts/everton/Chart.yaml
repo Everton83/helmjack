@@ -27,6 +27,6 @@ icon: file://teste.png
 
 dependencies:
  - name: grafana
-   version: 6.21.7
+   version: 6.21.1
    repository: file://../common/grafana
    condition: grafana.enabled
