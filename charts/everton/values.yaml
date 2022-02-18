@@ -2,6 +2,11 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+grafana:
+  enabled: false
+  adminUser: everton
+  adminPassword: password
+
 replicaCount: 1
 
 image:
@@ -9,6 +14,16 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
+
+ivenessProbe:
+  httpGet:
+    path: /
+    port: http
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
 
 imagePullSecrets: []
 nameOverride: ""
@@ -39,6 +54,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+  targetPort: 80
 
 ingress:
   enabled: false
@@ -67,6 +83,20 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+persistence:
+  enabled: true
+  size: 1Gi
+  name: volume
+
+volumes:
+  - name: volume
+    persistentVolumeClaim:
+      claimName: volume
+
+volumeMounts:
+  - mountPath: /home/everton
+    name: volume
 
 autoscaling:
   enabled: false
