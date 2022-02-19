@@ -8,7 +8,7 @@ image:
   repository: rishikoy/theiaide-full:1.0.0-SNAPSHOT
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "theia-ide"
 
 imagePullSecrets: []
 nameOverride: ""
