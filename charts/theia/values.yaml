@@ -5,14 +5,60 @@
 replicaCount: 1
 
 image:
-  repository: rishikoy/theiaide-full
+  repository: theiaide/theia
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.0.0-SNAPSHOT"
+  tag: "1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+configMap:
+  enabled: true
+  name: script
+  data: 
+    listar.sh: |-
+      #!/bin/bash
+      ls -ltra
+      echo "acabei de listar"
+    exec.sh: |-
+      #!/bin/bash
+      ls -ltra
+      echo "acabei de listar exec"
+
+# livenessProbe:
+  # httpGet:
+  #   path: /
+  #   port: http
+
+# readinessProbe:
+  # httpGet:
+  #   path: /
+  #   port: http
+
+persistence:
+  name: "volume-theia"
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 1Gi
+
+volumes:
+- name: script
+  configMap:
+    defaultMode: 0777
+    name: script
+    optional: false
+- name: volume-theia
+  persistentVolumeClaim:
+      claimName: volume-theia
+
+volumeMounts:
+- mountPath: /home/project/scripts
+  name: script
+- mountPath: /home/project
+  name: volume-theia
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -28,13 +74,15 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
   # capabilities:
   #   drop:
   #   - ALL
   # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+  runAsNonRoot: true
+  runAsUser: 1001
+  # fsGroup: 1001
+
 
 service:
   type: ClusterIP
@@ -42,20 +90,16 @@ service:
   targetPort: 3000
 
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+ enabled: true
+ annotations: {}
+   # kubernetes.io/ingress.class: nginx
+   # kubernetes.io/tls-acme: "true"
+ domain: theia-everton.turmalinda.jacexperts.io
+ hosts:
+   - host: theia-everton.turmalinda.jacexperts.io
+     paths:
+       - "/"
+ tls: []
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -68,20 +112,6 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
-
-persistence:
-  enabled: true
-  size: 1Gi
-  name: volume
-
-volumes:
-  - name: volume
-    persistentVolumeClaim:
-      claimName: volume
-
-volumeMounts:
-  - mountPath: /home/theia
-    name: volume
 
 autoscaling:
   enabled: false
