@@ -100,7 +100,7 @@ readinessProbe:
   initialDelaySeconds: 10
 
 configMap:
-  enabled: false
+  enabled: true
   name: ""
   data:
     var1: ""
