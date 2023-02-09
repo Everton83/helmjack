@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: {{ .values.configMap.name | default ( include "app-everton.fullname" . ) }}
+    name: {{ .Values.configMap.name | default ( include "app-everton.fullname" . ) }}
     labels:
         {{- include "app-everton.labels" . | nindent 4 }}
 {{- with .Values.configMap.data }}
