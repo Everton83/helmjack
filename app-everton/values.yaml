@@ -98,3 +98,12 @@ readinessProbe:
   failureThreshold: 3
   periodSeconds: 10
   initialDelaySeconds: 10
+
+configMap:
+  enabled: false
+  name: ""
+  data:
+    var1: ""
+    var2: ""
+    var3: ""
+    
