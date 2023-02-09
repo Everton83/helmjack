@@ -48,7 +48,7 @@ spec:
           {{- if .Values.configMap.enabled }}
           envFrom:
           - configMapeRef:
-            name: {{ .values.configMap.name | default ( include "app-everton.fullname" . ) }}
+            name: {{ .Values.configMap.name | default ( include "app-everton.fullname" . ) }}
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
