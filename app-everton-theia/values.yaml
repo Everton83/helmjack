@@ -79,7 +79,7 @@ ingress:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: everton-pinheiro.t1.jac.bsb.br
+    - host: theia-everton.helm.jackexperts.com
       paths:
         - path: /
           pathType: ImplementationSpecific
