@@ -5,8 +5,8 @@ metadata:
     name: {{ .Values.configMap.name | default ( include "app-everton-theia.fullname" . ) }}
     labels:
         {{- include "app-everton-theia.labels" . | nindent 8 }}
-{{- with .Values.configMap.persistentVolumeClaim }}
-persistentVolumeClaim:
+{{- with .Values.configMap.data }}
+data:
     {{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end -}}

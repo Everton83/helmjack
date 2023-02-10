@@ -39,17 +39,17 @@ securityContext: {}
 
 persistence:
   enabled: true
+  accessMode: "ReadWriteOnce"
+  size: "2Gi"
   name: ""
   namespace: ""
-  accessMode: ""
-  size: ""
   storageClass: ""
 
 configMap:
-  enabled: true
+  enabled: false
   name: ""
-  persistentVolumeClaim:
-    claimName: ""
+  data:
+    var01: ""
 
 livenessProbe:
   httpGet:
