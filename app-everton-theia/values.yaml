@@ -45,6 +45,15 @@ persistence:
   namespace: "wp-everton"
   storageClass: "longhorn"
 
+volumes:
+  name: "vol-1"
+  persistentVolumeClaim:
+    claimName: "ide-everton"
+
+volumeMounts:
+  mountPath: "/home/project"
+  name: "vol-1"
+
 configMap:
   enabled: false
   name: ""
