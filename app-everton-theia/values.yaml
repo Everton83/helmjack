@@ -41,8 +41,8 @@ persistence:
   enabled: true
   accessMode: "ReadWriteOnce"
   size: "2Gi"
-  name: ""
-  namespace: ""
+  name: "ide-everton"
+  namespace: "wp-everton"	
   storageClass: ""
 
 configMap:
