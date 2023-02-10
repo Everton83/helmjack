@@ -27,10 +27,8 @@ spec:
       serviceAccountName: {{ include "app-everton-theia.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      {{- with .Values.volumes }}
       volumes:
-        {{- toYaml . | nindent 6 }}
-      {{- end }}
+        {{- toYaml .Values.volumes | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
