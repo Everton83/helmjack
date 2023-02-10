@@ -49,7 +49,7 @@ volumes:
   name: "vol-1"
 
 persistentVolumeClaim:
-    claimName: "ide-everton"
+  claimName: "ide-everton"
 
 volumeMounts:
   mountPath: "/home/project"
