@@ -2,8 +2,8 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ .Values.persistentVolumeClaim.name | default ( include "app-everton-theia.fullname" . ) }}
-  namespace: {{ .Values.persistentVolumeClaim.namespace | default ( include "app-everton-theia.fullname" . ) }}
+  name: {{ .Values.persistence.name | default ( include "app-everton-theia.fullname" . ) }}
+  namespace: {{ .Values.persistence.namespace | default ( include "app-everton-theia.fullname" . ) }}
   labels:
         {{- include "app-everton-theia.labels" . | nindent 8 }}
 spec:
