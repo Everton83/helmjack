@@ -6,7 +6,7 @@ metadata:
     labels:
         {{- include "app-everton-theia.labels" . | nindent 8 }}
 {{- with .Values.configMap.persistentVolumeClaim }}
-data:
+persistentVolumeClaim:
     {{- toYaml . | nindent 2 }}
 {{- end }}
 {{- end -}}
