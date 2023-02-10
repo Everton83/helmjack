@@ -1,0 +1,12 @@
+{{- if .Values.configMap.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: {{ .Values.configMap.name | default ( include "app-everton-theia.fullname" . ) }}
+    labels:
+        {{- include "app-everton-theia.labels". | nindent 8 }}
+{{- with .Values.configMap.persistentVolumeClaim }}
+data:
+    {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end -}}

@@ -1,0 +1,22 @@
+{{- if and .Values.persistence.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Values.persistentVolumeClaim.name | default ( include "app-everton-theia.fullname" . ) }}
+  namespace: {{ .Values.persistentVolumeClaim.namespace | default ( include "app-everton-theia.fullname" . ) }}
+  labels:
+        {{- include "app-everton-theia.labels" . | nindent 8 }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.size | quote }}
+{{- if .Values.persistence.storageClass }}
+{{- if (eq "-" .Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end }}
