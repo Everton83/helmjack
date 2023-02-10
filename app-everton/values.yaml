@@ -101,9 +101,9 @@ readinessProbe:
 
 configMap:
   enabled: true
-  name: "configmapeverton"
+  name: ""
   data:
-    var1: "teste1"
-    var2: "teste2"
-    var3: "teste3"
+    var1: "01"
+    var2: "02"
+    var3: "03"
     
