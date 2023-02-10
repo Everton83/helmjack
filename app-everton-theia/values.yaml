@@ -53,10 +53,9 @@ persistentVolumeClaim:
 
 volumeMounts:
   mountPath: "/home/project"
-  name: "vol-1"
 
 configMap:
-  enabled: false
+  enabled: true
   name: ""
   data:
     DEBIAN_FRONTEND: "noninteractive"

@@ -43,7 +43,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - mountPath: {{ .Values.volumeMounts.mountPath }}
-              name: {{ .Values.volumeMounts.name }}
+              name: {{ .Values.volumes.name }}
           {{- with .Values.livenessProbe }}
           livenessProbe:
             {{- toYaml . | nindent 12 }}
