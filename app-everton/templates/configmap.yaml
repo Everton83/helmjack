@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
     name: {{ .Values.configMap.name | default ( include "app-everton.fullname" . ) }}
     labels:
-        {{- include "app-everton.labels" . | nindent 4 }}
+        {{- include "app-everton.labels" . | nindent 8 }}
 {{- with .Values.configMap.data }}
 data:
     {{- toYaml . | nindent 2 }}
