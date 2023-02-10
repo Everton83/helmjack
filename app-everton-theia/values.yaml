@@ -47,7 +47,8 @@ persistence:
 
 volumes:
   name: "vol-1"
-  persistentVolumeClaim:
+
+persistentVolumeClaim:
     claimName: "ide-everton"
 
 volumeMounts:
