@@ -1,0 +1,4 @@
+#      volumes:
+#        - name: {{ .values.configMap.name | default (include "app-everton.fullname" .) }}
+#        configMapRef:
+#        name: {{ .values.configMap.name | default (include "app-everton.fullname" .) }}
