@@ -43,7 +43,7 @@ persistence:
   size: "2Gi"
   name: "ide-everton"
   namespace: "wp-everton"
-  storageClass: ""
+  storageClass: "longhorn"
 
 configMap:
   enabled: false
@@ -69,8 +69,8 @@ readinessProbe:
 
 service:
   type: ClusterIP
-  port: 3000
-  targetPort: 80
+  port: 80
+  targetPort: 3000
 
 ingress:
   enabled: true
