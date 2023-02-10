@@ -28,9 +28,9 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-        {{- toYaml .Values.volumes | nindent 8 }}
+        - name: {{ .Values.volumes.name }}
         persistentVolumeClaim:
-          {{- toYaml .Values.persistentVolumeClaim | nindent 10 }}
+          claimName: {{ .Values.persistentVolumeClaim.claimName }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
