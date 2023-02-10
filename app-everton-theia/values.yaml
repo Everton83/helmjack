@@ -59,7 +59,24 @@ configMap:
   enabled: false
   name: ""
   data:
-    var01: ""
+    DEBIAN_FRONTEND: "noninteractive"
+    NODE_VERSION: 12.18.3
+    YARN_VERSION: 1.22.5
+    GO_VERSION: "1.15"
+    GOOS: "linux"
+    GOARCH: "amd64"
+    PATH: "/usr/local/go-packages/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/go-packages/bin"
+    DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+    ENV SHELL: "/bin/bash" 
+    THEIA_DEFAULT_PLUGINS: "local-dir:/home/theia/plugins"
+    GOPATH: "/home/project"
+    LC_ALL: "C.UTF-8"
+    LANG: "C.UTF-8"
+    CMAKE_VERSION: 3.18.1
+    DOTNET_VERSION: 3.1 
+    PHP_VERSION: 7.4
+    LLVM: 14
 
 livenessProbe:
   httpGet:
