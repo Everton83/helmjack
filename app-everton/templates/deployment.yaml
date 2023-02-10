@@ -47,7 +47,7 @@ spec:
           {{- end }}
           {{- if .Values.configMap.enabled }}
           envFrom:
-          - configMapeRef:
+          - configMapRef:
             name: {{ .Values.configMap.name | default ( include "app-everton.fullname" . ) }}
           {{- end }}
           resources:
