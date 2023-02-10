@@ -108,13 +108,13 @@ ingress:
   hosts:
     - host: theia-everton.helm.jackexperts.com
       paths:
-      - backend:
+        path: /
+        pathType: ImplementationSpecific
+        backend:
           service:
             name: "ide-everton"
             port:
               number: 80
-        path: /
-        pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
