@@ -30,7 +30,7 @@ spec:
       volumes:
         - name: {{ .values.configMap.name | default (include "app-everton-theia.fullname" .) }}
         configMapRef:
-        name: {{ .values.configMap.name | default (include "app-everton-theia.fullname" .) }}
+          - name: {{ .values.configMap.name | default (include "app-everton-theia.fullname" .) }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
